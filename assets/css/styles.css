@@ -37,7 +37,7 @@ h1 {
 }
 
 .questions {
-    display: flexbox;
+    display: flex;
     position: absolute;
     left: 45%;
     top: 20%;
