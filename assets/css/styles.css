@@ -1,7 +1,7 @@
 header {
     display: flex;
     justify-content: space-between;
-    margin: 0 5%;
+    margin: 5% 5%;
 }
 
 .page-content {
@@ -12,14 +12,25 @@ h1 {
     margin-top: 50px;
 }
 
-.scores {
+.scores, .timer {
     color: purple;
 }
 
+.instructions {
+    width: 50%;
+    margin: 0 auto;
+}
+
 .page-content p {
-    margin: 0 100px;
-    display: flex;
-    justify-content: center;
+    width: 15%;
+    margin: 10px 20%;
+    color: #fff;
+    padding: 5px 10px;
+    border: 1px solid #330066;
+    background-color: #330066;
+    text-align: left;
+    border-radius: 10%;
+
 }
 
 .button {
@@ -32,14 +43,18 @@ h1 {
     transition: background 0.1s ease;
 }
 
-.button:active{
+.button::active{
     background-color: violet;
 }
 
 .questions {
-    display: flex;
-    position: absolute;
-    left: 45%;
-    top: 20%;
     display: none;
+}
+
+.question {
+    margin: 10%;
+}
+
+p:active {
+    background-color: violet;
 }

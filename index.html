@@ -9,29 +9,27 @@
 </head>
 <body>
     <header>
-        <p class="scores">View high scores</p>
-        <p class="timer">Time:</p>
+        <div class="scores" id="scores">View high scores</div>
+        <div class="timer" id="timer">Time:</div>
     </header>
     <main class="page-content">
-        <div class="front">
+        <div class="front" id="front">
             <div>
                 <h1>Javascript Quiz</h1>
             </div>
-            <div>
-                <p>
+            <div class="instructions">
                     Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by 10 seconds!
-                </p>
             </div>
             <div>
                 <button class="button" id="btn">Start Quiz</button>
             </div>
         </div>
-        <div class="questions">
-            <div class="question" id="question"></div>
-            <div class="choice1" id="answer1"></div>
-            <!-- <div class="choice2" id="answer2"></div>
-            <div class="choice3" id="answer3"></div>
-            <div class="choice4" id="answer4"></div> -->
+        <div class="challenge" id="challenge">
+            <div class="question"></div>
+            <div class="choice1"  id="a" onclick="checkAnswer('a')"></div>
+            <div class="choice2" id="b"  onclick="checkAnswer('b')"></div>
+            <div class="choice3"  id="c" onclick="checkAnswer('c')"></div>
+            <div class="choice4" id="d" onclick="checkAnswer('d')"></div>
         </div>
     </main>
     <script src="./assets/js/script.js"></script>
