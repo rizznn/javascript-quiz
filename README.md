@@ -10,4 +10,4 @@ This website is created with Visual Studio Code using html, css and javascript. 
 ![Screenshot]
 
 ## Link to deployed application
-
+https://rizznn.github.io/javascript-quiz/
