@@ -1,5 +1,6 @@
 // elements
 const frontPage = document.querySelector("#front");
+const choicesEl = document.querySelector("#choices");
 const buttonEl = document.querySelector("#btn");
 const scoresEl = document.querySelector("#scores");
 const timerEl = document.querySelector("#timer");
@@ -15,43 +16,43 @@ const d = document.querySelector("#d");
 let quizQuestions = [
     {
         question: "Commonly used data types DO Not Include:",
-        a: '1. strings',
-        b: '2. booleans',
-        c: '3. alerts',
-        d: '4. numbers',
-        ans: 'c'
+        a: "1. strings",
+        b: "2. booleans",
+        c: "3. alerts",
+        d: "4. numbers",
+        ans: "c"
     },
     {
         question: "The condition in an if/else statement is enclosed with ________.",
-        a: '1. quotes',
-        b: '2. curly brackets',
-        c: '3. parenthesis',
-        d: '4. square brackets',
-        ans: 'c'
+        a: "1. quotes",
+        b: "2. curly brackets",
+        c: "3. parenthesis",
+        d: "4. square brackets",
+        ans: "c"
     },
     {
         question: "Arrays in JavaScript can be used to store ________:",
-        a: '1. numbers and strings',
-        b: '2. other arrays',
-        c: '3. booleans',
-        d: '4. all of the above',
-        ans: 'd'
+        a: "1. numbers and strings",
+        b: "2. other arrays",
+        c: "3. booleans",
+        d: "4. all of the above",
+        ans: "d"
     },
     {
         question: "String values must be enclosed within ________ when being assigned to variables.",
-        a: '1. commas',
-        b: '2. curly brackets',
-        c: '3. quotes',
-        d: '4. parenthesis',
-        ans: 'c'
+        a: "1. commas",
+        b: "2. curly brackets",
+        c: "3. quotes",
+        d: "4. parenthesis",
+        ans: "c"
     },
     {
         question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-        a: '1. JavaScript',
-        b: '2. terminal/bash',
-        c: '3. for loops',
-        d: '4. console.log',
-        ans: 'd'
+        a: "1. JavaScript",
+        b: "2. terminal/bash",
+        c: "3. for loops",
+        d: "4. console.log",
+        ans: "d"
     },
 ];
 
@@ -93,6 +94,7 @@ buttonEl.addEventListener("click", function(){
     frontPage.style.display = "none";
     showQuestions();
     challengeEl.style.display = "block";
+    choicesEl.removeAttribute("class");
     time();
 });
 
@@ -102,13 +104,13 @@ buttonEl.addEventListener("click", function(){
 //     }
 // }
 
-function checkAnswer(answer){
-    if (quizQuestions[firstQ].corr === answer){
+function checkAnswer(ans){
+    if (quizQuestions[firstQ].correct === ans){
         scores++;
         correctAnswer();
     } else {
         wrongAnswer();
-
+        time-10;
     }
 
     count = 0;
@@ -147,7 +149,7 @@ function showScore(){
 
 //     var question = document.querySelector(".question");
 //     var myArray = [{   q: "Commonly used data types DO Not Include:",s
-//     a:'1. strings',  b: '2. booleans', c: '3. alerts',  d: '4. numbers'}];
+
 //     for (var myItem of myArray) {
 
 //       var myNewP = document.createElement("h2");

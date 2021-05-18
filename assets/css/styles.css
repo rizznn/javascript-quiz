@@ -21,9 +21,9 @@ h1 {
     margin: 0 auto;
 }
 
-.choices .c {
+.c {
     width: 15%;
-    margin: 10px 20%;
+    margin: 10px 30%;
     color: #fff;
     padding: 5px 10px;
     border: 1px solid #330066;
@@ -31,6 +31,10 @@ h1 {
     text-align: left;
     border-radius: 10%;
 
+}
+
+.hide {
+    display: none;
 }
 
 .button {
@@ -47,8 +51,6 @@ h1 {
     background-color: violet;
 }
 
-
-
-p:active {
+.c:active {
     background-color: violet;
 }
