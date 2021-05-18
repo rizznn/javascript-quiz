@@ -21,7 +21,7 @@ h1 {
     margin: 0 auto;
 }
 
-.page-content p {
+.choices .c {
     width: 15%;
     margin: 10px 20%;
     color: #fff;
@@ -47,13 +47,7 @@ h1 {
     background-color: violet;
 }
 
-.questions {
-    display: none;
-}
 
-.question {
-    margin: 10%;
-}
 
 p:active {
     background-color: violet;

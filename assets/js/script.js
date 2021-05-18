@@ -58,7 +58,6 @@ let quizQuestions = [
 // variables
 const lastQ = quizQuestions.length - 1;
 let firstQ = 0;
-let count = 0;
 let score = 0;
 
 function showQuestions() {
@@ -75,23 +74,26 @@ function showQuestions() {
 
 var timerCount = 75;
 
+function time() {
+
+    timer.innerHTML = "Time: <span>" + timerCount + "</span> s"
+
+    var countdown = setInterval(function(){
+        timerCount--;
+        timer.innerHTML = "Time: <span>" + timerCount + "</span> s"
+
+        if(timerCount === 0){
+            clearInterval(countdown);
+        }
+    }, 1000);
+}
+
 buttonEl.addEventListener("click", function(){
     buttonEl.style.display = "none";
     frontPage.style.display = "none";
     showQuestions();
     challengeEl.style.display = "block";
-    
-
-    timer.innerHTML = "Time: <span>" + timerCount + "</span> s"
-
-    var countdown = setInterval(function(count){
-        timerCount--;
-        timer.innerHTML = "Time: <span>" + timerCount + "</span> s"
-
-        if(timerCount <= 0){
-            clearInterval(countdown);
-        }
-    }, 1000);
+    time();
 });
 
 // function showProgress() {
@@ -106,6 +108,7 @@ function checkAnswer(answer){
         correctAnswer();
     } else {
         wrongAnswer();
+
     }
 
     count = 0;
@@ -120,11 +123,11 @@ function checkAnswer(answer){
 
 
 function correctAnswer() {
-    correct.innerHTML = "<div class='right'" + 'Correct!' + "></div>";
+    checkAnswer.innerHTML = "<div class='right'" + 'Correct!' + "></div>";
 }
 
 function wrongAnswer() {
-    wrong.innerHTML = "<div class='wrong'" + 'Wrong!' + "></div>";
+    checkAnswer.innerHTML = "<div class='wrong'" + 'Wrong!' + "></div>";
 }
 
 
@@ -135,7 +138,6 @@ function showScore(){
     // calculate the amount of question percent answered by the user
     const scorePercentage = Math.round(100 * score/quizQuestions.length);
    
-    scoresEl.innerHTML = "<img src="+ img +">";
     scoresEl.innerHTML += "<p>"+ scorePercentage +"%</p>";
 }
 
