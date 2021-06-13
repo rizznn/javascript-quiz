@@ -101,12 +101,14 @@ function time() {
 buttonEl.addEventListener("click", startQuiz());
 
 function startQuiz(){
-    buttonEl.style.display = "none";
-    frontPage.style.display = "none";
+    front.style.display = "none";
     showQuestions();
     challengeEl.style.display = "block";
     choicesEl.removeAttribute("class");
     time();
+    // if(buttonEl){
+
+    // }
 };
 
 // function showProgress() {
@@ -116,27 +118,35 @@ function startQuiz(){
 // }
 
 function checkAnswer(ans){
-    console.log(firstQ);
+    console.log(ans);
+    if (firstQ === quizQuestions.length-1){
+        alert('game over!')
+    }
     if (quizQuestions[firstQ].ans === ans){
         scores++;
+        firstQ++;
+        showQuestions();
         correctAnswer();
     } else {
         wrongAnswer();
-    }
-
-    count = 0;
-    if (firstQ < lastQ) {
         firstQ++;
         showQuestions();
-    } else {
-        clearInterval(countdown);
-        showScore();
+        timerCount-=10;
     }
+
+    // count = 0;
+    // if (firstQ < lastQ) {
+    //     firstQ++;
+    //     showQuestions();
+    // } else {
+    //     clearInterval(time);
+    //     showScore();
+    // }
 }
 
 
-function correctAnswer() {``
-    // correct.innerHTML = "<div class='right'" + 'Correct!' + "></div>";
+function correctAnswer() {
+    correct.innerHTML = "<div class='right'" + 'Correct!' + "></div>";
     console.log("correct");
 }
 
@@ -154,47 +164,3 @@ function showScore(){
    
     scoresEl.innerHTML += "<p>"+ scorePercentage +"%</p>";
 }
-
-// var choice1 = document.createElement("p");
-//       choice1.textContent = myItem.a;
-//       question.appendChild(choice1);
-
-//     var question = document.querySelector(".question");
-//     var myArray = [{   q: "Commonly used data types DO Not Include:",s
-
-//     for (var myItem of myArray) {
-
-//       var myNewP = document.createElement("h2");
-//       myNewP.textContent = myItem.q;
-//       question.appendChild(myNewP);
-
-//       var choice1 = document.createElement("p");
-//       choice1.textContent = myItem.a;
-//       question.appendChild(choice1);
-
-//       var choice2 = document.createElement("p");
-//       choice2.textContent = myItem.b;
-//       question.appendChild(choice2);
-
-//       var choice3 = document.createElement("p");
-//       choice3.textContent = myItem.c;
-//       question.appendChild(choice3);
-
-
-
-//       var choice4 = document.createElement("p");
-//       choice4.textContent = myItem.d;
-//       question.appendChild(choice4);
-    
-//       function checkAnswer() {
-//         if (cc){
-//             var correctAnswer = document.createElement("div")
-//             correctAnswer.textContent = "Correct!";
-//         } else {
-//             var wrongAnswer = document.createElement("div")
-//             wrongAnswer.textContent = "Wrong!";
-//         }
-//       }
-//     console.log(checkAnswer);
-//     }
-// });
