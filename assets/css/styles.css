@@ -4,9 +4,8 @@ header {
     margin: 5% 5%;
 }
 
-.page-content {
-    max-width: 70%;
-    margin: 0 auto;
+body {
+    font-size: 1.25rem;
 }
 
 .front {
@@ -26,7 +25,7 @@ header {
 
 .wrap {
     margin: 0 auto;
-    width: 50%;
+    width: 35%;
     text-align: center;
 }
 
@@ -37,11 +36,12 @@ header {
     border: 1px solid #330066;
     background-color: #330066;
     border-radius: 5px;
-    width: 15%
+    width: 25%;
 }
 
 .hide {
-    display: none;}
+    display: none;
+}
 
 .button {
     margin-top: 15px;
@@ -52,9 +52,10 @@ header {
     color: #fff;
     transition: background 0.1s ease;
     text-align: center;
+    font-size: 1rem;
 }
 
-.button::active{
+.option:active {
     background-color: violet;
 }
 
@@ -62,8 +63,18 @@ header {
     background-color: violet;
 }
 
-.question {
+.challenge {
+    max-width: 60%;
     margin: 0 auto;
-    width: 70%;
-    text-align: left;
+}
+
+.addedStyle {
+    padding-bottom: 25px;
+    border-bottom: 2px solid darkgrey;
+}
+
+.comment {
+    color: darkgray;
+    font-style: italic;
+    margin-top: 10px;
 }

@@ -65,10 +65,9 @@ let score = 0;
 let optionEl = document.querySelectorAll(".option");
 
 function showQuestions() {
-
     let quiz = quizQuestions[firstQ];
 
-    question.innerHTML = "<h1>" + quiz.question + "</h1>";
+    question.innerHTML = "<h2>" + quiz.question + "</h2>";
     question.className = "question";
     a.innerHTML = quiz.a;
     b.innerHTML = quiz.b;
@@ -109,23 +108,23 @@ buttonEl.addEventListener("click", function() {
     time();
 });
 
-// function showProgress() {
-//     for (var quizInd = 0; quizInd <= lastQ; quizInd++){
-//         progress.innerHTML += "<div class='prog' id="+ quizInd + "></div>";
-//     }
-// }
-
+// function to display if the answer is correct
 function correctAnswer() {
-    choicesEl.style.borderBottom = "thin solid black";
+    choicesEl.className="addedStyle";
+    checkEl.className="comment";
     checkEl.innerHTML = "<div>" + 'Correct!' + "</div>";
     console.log("correct");
 }
 
+// function to display if the answer is wrong
 function wrongAnswer() {
-    choicesEl.style.borderBottom = "thin solid black";
+    timerCount -= 10;
+    choicesEl.className="addedStyle";
+    checkEl.className="comment";
     checkEl.innerHTML = "<div>" + 'Wrong!' + "</div>";
 }
 
+// function to check the answer
 function checkAnswer(ans){
     console.log(ans);
     if (firstQ === quizQuestions.length-1){
@@ -140,7 +139,6 @@ function checkAnswer(ans){
         wrongAnswer();
         firstQ++;
         showQuestions();
-        timerCount-=10;
     }
 
     // count = 0;
