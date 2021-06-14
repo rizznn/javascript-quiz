@@ -5,37 +5,43 @@ header {
 }
 
 .page-content {
-    text-align: center;
+    max-width: 70%;
+    margin: 0 auto;
 }
 
-h1 {
+.front {
+    display: flex;
+    display: block;
+    justify-content: center;
+}
+
+.title {
     margin-top: 50px;
+    text-align: center;
 }
 
 .scores, .timer {
     color: purple;
 }
 
-.instructions {
-    width: 50%;
+.wrap {
     margin: 0 auto;
+    width: 50%;
+    text-align: center;
 }
 
 .option {
-    width: 15%;
-    margin: 10px 30%;
+    margin-bottom: 10px;
     color: #fff;
     padding: 5px 10px;
     border: 1px solid #330066;
     background-color: #330066;
-    text-align: left;
-    border-radius: 10%;
-
+    border-radius: 5px;
+    width: 15%
 }
 
 .hide {
-    display: none;
-}
+    display: none;}
 
 .button {
     margin-top: 15px;
@@ -45,12 +51,19 @@ h1 {
     padding: 5px 15px;
     color: #fff;
     transition: background 0.1s ease;
+    text-align: center;
 }
 
 .button::active{
     background-color: violet;
 }
 
-.c:active {
+.button:active {
     background-color: violet;
+}
+
+.question {
+    margin: 0 auto;
+    width: 70%;
+    text-align: left;
 }

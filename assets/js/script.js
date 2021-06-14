@@ -6,6 +6,7 @@ const scoresEl = document.querySelector("#scores");
 const timerEl = document.querySelector("#timer");
 const challengeEl = document.querySelector("#challenge");
 const questionEl = document.querySelector("#question");
+const checkEl = document.querySelector("#check");
 
 const a = document.querySelector("#a");
 const b = document.querySelector("#b");
@@ -31,7 +32,7 @@ let quizQuestions = [
         ans: "3. parenthesis"
     },
     {
-        question: "Arrays in JavaScript can be used to store ________:",
+        question: "Arrays in JavaScript can be used to store ________.",
         a: "1. numbers and strings",
         b: "2. other arrays",
         c: "3. booleans",
@@ -64,9 +65,11 @@ let score = 0;
 let optionEl = document.querySelectorAll(".option");
 
 function showQuestions() {
+
     let quiz = quizQuestions[firstQ];
 
-    question.innerHTML = "<p>" + quiz.question + "</p>";
+    question.innerHTML = "<h1>" + quiz.question + "</h1>";
+    question.className = "question";
     a.innerHTML = quiz.a;
     b.innerHTML = quiz.b;
     c.innerHTML = quiz.c;
@@ -98,24 +101,30 @@ function time() {
     }, 1000);
 }
 
-buttonEl.addEventListener("click", startQuiz());
-
-function startQuiz(){
-    front.style.display = "none";
+buttonEl.addEventListener("click", function() {
+    frontPage.style.display = "none";
     showQuestions();
     challengeEl.style.display = "block";
     choicesEl.removeAttribute("class");
     time();
-    // if(buttonEl){
-
-    // }
-};
+});
 
 // function showProgress() {
 //     for (var quizInd = 0; quizInd <= lastQ; quizInd++){
 //         progress.innerHTML += "<div class='prog' id="+ quizInd + "></div>";
 //     }
 // }
+
+function correctAnswer() {
+    choicesEl.style.borderBottom = "thin solid black";
+    checkEl.innerHTML = "<div>" + 'Correct!' + "</div>";
+    console.log("correct");
+}
+
+function wrongAnswer() {
+    choicesEl.style.borderBottom = "thin solid black";
+    checkEl.innerHTML = "<div>" + 'Wrong!' + "</div>";
+}
 
 function checkAnswer(ans){
     console.log(ans);
@@ -125,8 +134,8 @@ function checkAnswer(ans){
     if (quizQuestions[firstQ].ans === ans){
         scores++;
         firstQ++;
-        showQuestions();
         correctAnswer();
+        showQuestions();
     } else {
         wrongAnswer();
         firstQ++;
@@ -142,16 +151,6 @@ function checkAnswer(ans){
     //     clearInterval(time);
     //     showScore();
     // }
-}
-
-
-function correctAnswer() {
-    correct.innerHTML = "<div class='right'" + 'Correct!' + "></div>";
-    console.log("correct");
-}
-
-function wrongAnswer() {
-    checkAnswer.innerHTML = "<div class='wrong'" + 'Wrong!' + "></div>";
 }
 
 
