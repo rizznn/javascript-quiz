@@ -43,29 +43,36 @@ body {
     display: none;
 }
 
-.button {
-    margin-top: 15px;
+.button, .submitBtn {
     border: 1px purple solid;
     background-color:  #330066;
     border-radius: 10%;
     padding: 5px 15px;
     color: #fff;
     transition: background 0.1s ease;
-    text-align: center;
     font-size: 1rem;
 }
-
-.option:active {
-    background-color: violet;
+.button{
+    text-align: center;
+    margin-top: 15px;
 }
 
-.button:active {
+.btn:active {
     background-color: violet;
 }
 
 .challenge {
     max-width: 60%;
     margin: 0 auto;
+}
+
+.results {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.userInitial {
+    padding: 3px;
 }
 
 .addedStyle {

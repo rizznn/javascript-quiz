@@ -7,13 +7,16 @@ const timerEl = document.querySelector("#timer");
 const challengeEl = document.querySelector("#challenge");
 const questionEl = document.querySelector("#question");
 const checkEl = document.querySelector("#check");
+const resultsEl = document.querySelector("#results");
+const userInitEl = document.querySelector("#userInitial");
+const submitBtnEl = document.querySelector("#submitBtn");
 
 const a = document.querySelector("#a");
 const b = document.querySelector("#b");
 const c = document.querySelector("#c");
 const d = document.querySelector("#d");
 
-// questions
+// set of questions
 let quizQuestions = [
     {
         question: "Commonly used data types DO Not Include:",
@@ -75,7 +78,7 @@ function showQuestions() {
     d.innerHTML = quiz.d;
 
 }
-
+// when the user click on the options
 optionEl.forEach(optionButton => {
     optionButton.addEventListener("click",function(){
         let userAnswer = optionButton.textContent
@@ -83,23 +86,7 @@ optionEl.forEach(optionButton => {
     });
 });
 
-
-var timerCount = 75;
-
-function time() {
-
-    timer.innerHTML = "Time: <span>" + timerCount + "</span> s"
-
-    var countdown = setInterval(function(){
-        timerCount--;
-        timer.innerHTML = "Time: <span>" + timerCount + "</span> s"
-
-        if(timerCount === 0){
-            clearInterval(countdown);
-        }
-    }, 1000);
-}
-
+// when the start quiz was clicked
 buttonEl.addEventListener("click", function() {
     frontPage.style.display = "none";
     showQuestions();
@@ -108,12 +95,31 @@ buttonEl.addEventListener("click", function() {
     time();
 });
 
+var timerCount = 75;
+var countdown;
+function time() {
+    timer.innerHTML = "Time: <span>" + timerCount + "</span> s"
+
+    var countdown = setInterval(function(){
+        timerCount--;
+        timer.innerHTML = "Time: <span>" + timerCount + "</span> s"
+
+        if(timerCount === 0 || firstQ === lastQ){
+            clearInterval(countdown);
+        }
+    }, 1000);
+}
+
 // function to display if the answer is correct
 function correctAnswer() {
     choicesEl.className="addedStyle";
     checkEl.className="comment";
     checkEl.innerHTML = "<div>" + 'Correct!' + "</div>";
     console.log("correct");
+
+    setTimeout(function(){
+        clearCheck();
+    }, 2000);
 }
 
 // function to display if the answer is wrong
@@ -122,16 +128,27 @@ function wrongAnswer() {
     choicesEl.className="addedStyle";
     checkEl.className="comment";
     checkEl.innerHTML = "<div>" + 'Wrong!' + "</div>";
+
+    setTimeout(function(){
+        clearCheck();
+    }, 2000);
+}
+
+// clear the check after the answer check was displayed
+function clearCheck(){
+    choicesEl.classList.remove("addedStyle");
+    checkEl.classList.remove("comment");
+    checkEl.innerHTML = "<div>" + '' + "</div>";
 }
 
 // function to check the answer
 function checkAnswer(ans){
     console.log(ans);
-    if (firstQ === quizQuestions.length-1){
-        alert('game over!')
+    if (firstQ === lastQ){
+        gameOver();
     }
     if (quizQuestions[firstQ].ans === ans){
-        scores++;
+        score++;
         firstQ++;
         correctAnswer();
         showQuestions();
@@ -151,6 +168,27 @@ function checkAnswer(ans){
     // }
 }
 
+function gameOver() {
+    challengeEl.style.display = "none";
+    resultsEl.style.display="block";
+
+    submitBtnEl.addEventListener("click", function(event){
+        event.preventDefault;
+        // Gets input value
+        userInput = userInitEl.value;
+        console.log(userInput);
+        // Saves data to storage
+        localStorage.setItem("userInput", 
+        // converts array to string
+        JSON.stringify(userInput));
+    });
+
+
+    // checkEl.className="comment";
+    // const para = document.createElement("p");
+    // para.textContent = "Your final score is";
+    // questionEl.appendChild(para);
+}
 
 // scores
 function showScore(){
@@ -158,6 +196,9 @@ function showScore(){
     
     // calculate the amount of question percent answered by the user
     const scorePercentage = Math.round(100 * score/quizQuestions.length);
-   
-    scoresEl.innerHTML += "<p>"+ scorePercentage +"%</p>";
+    
+    console.log(score);
+    console.log(scorePercentage);
+
+    scoresEl.innerHTML += "<p>"+ scorePercentage + "%" + "</p>";
 }

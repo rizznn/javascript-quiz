@@ -26,23 +26,34 @@
                     </p>
                 </div>
                 <div class="wrap">
-                    <button class="button" id="btn">Start Quiz</button>
+                    <button class="button btn" id="btn">Start Quiz</button>
                 </div>
             </div>
         </section>
         <section>
-
+            <div class="challenge" id="challenge">
+                <div class="question" id="question"></div>
+                <div class="hide" id="choices">
+                    <div class="option choice1 btn"  id="a"></div>
+                    <div class="option choice2 btn" id="b"></div>
+                    <div class="option choice3 btn"  id="c"></div>
+                    <div class="option choice4 btn" id="d"></div>
+                </div>    
+                <div id="check"></div>
+            </div>
         </section>
-        <div class="challenge" id="challenge">
-            <div class="question" id="question"></div>
-            <div class="hide" id="choices">
-                <div class="option choice1"  id="a"></div>
-                <div class="option choice2" id="b"></div>
-                <div class="option choice3"  id="c"></div>
-                <div class="option choice4" id="d"></div>
-            </div>    
-            <div id="check"></div>
-        </div>
+        <section>
+            <div class="results hide" id="results">
+                <h2 class="done" id="done">All Done!</h2>
+                <div class="finalResult" id="finalResult">
+                    <p>
+                        Your final score is <span class="finalScore"></span></div>
+                    </p>
+                <label for="userInitial">Enter initials: </label>
+                <input type="text" class="userInitial" value="">
+                <button class="submitBtn btn" id="submitBtn" type="submit">Submit</button>
+            </div>
+        </section>
     </main>
     <script src="./assets/js/script.js"></script>
 </body>
