@@ -8,9 +8,13 @@ const challengeEl = document.querySelector("#challenge");
 const questionEl = document.querySelector("#question");
 const checkEl = document.querySelector("#check");
 const resultsEl = document.querySelector("#results");
-const userInitEl = document.querySelector("#userInitial");
+var userInitEl = document.querySelector("#userInitial");
 const submitBtnEl = document.querySelector("#submitBtn");
-
+var finalScoreEl = document.querySelector(".finalScore");
+const highScoresEl = document.querySelector("#highScores");
+const highScoresListEl = document.querySelector("#highScoresList");
+const goBackEl = document.querySelector("#goBack");
+const clearHighScoresEl = document.querySelector("#clearHighScores");
 const a = document.querySelector("#a");
 const b = document.querySelector("#b");
 const c = document.querySelector("#c");
@@ -87,7 +91,7 @@ optionEl.forEach(optionButton => {
 });
 
 // when the start quiz was clicked
-buttonEl.addEventListener("click", function() {
+var startPage = buttonEl.addEventListener("click", function() {
     frontPage.style.display = "none";
     showQuestions();
     challengeEl.style.display = "block";
@@ -157,48 +161,43 @@ function checkAnswer(ans){
         firstQ++;
         showQuestions();
     }
-
-    // count = 0;
-    // if (firstQ < lastQ) {
-    //     firstQ++;
-    //     showQuestions();
-    // } else {
-    //     clearInterval(time);
-    //     showScore();
-    // }
 }
+
+var highscore = 0;
+
 
 function gameOver() {
     challengeEl.style.display = "none";
-    resultsEl.style.display="block";
-
-    submitBtnEl.addEventListener("click", function(event){
-        event.preventDefault;
-        // Gets input value
-        userInput = userInitEl.value;
-        console.log(userInput);
-        // Saves data to storage
-        localStorage.setItem("userInput", 
-        // converts array to string
-        JSON.stringify(userInput));
-    });
-
-
-    // checkEl.className="comment";
-    // const para = document.createElement("p");
-    // para.textContent = "Your final score is";
-    // questionEl.appendChild(para);
-}
-
-// scores
-function showScore(){
-    scoresEl.style.display = "block";
+    resultsEl.style.display="block"; 
     
-    // calculate the amount of question percent answered by the user
-    const scorePercentage = Math.round(100 * score/quizQuestions.length);
-    
-    console.log(score);
-    console.log(scorePercentage);
+    // score is equals to the amount of time left
+    var scorePercentage = timerCount;
 
-    scoresEl.innerHTML += "<p>"+ scorePercentage + "%" + "</p>";
+    const span = document.createElement("span");
+    span.textContent = scorePercentage;
+    finalScoreEl.appendChild(span);
+
+    submitBtnEl.addEventListener("click", function(){
+        resultsEl.style.display="none";
+        highScoresEl.style.display="block";
+        
+        // // Gets input value
+        var userInput = userInitEl.value;
+        var highScoreObject = {
+            name: userInput,
+            score:  scorePercentage
+        }
+        
+        save(highScoreObject);
+
+        scoresEl.style.display = "block";
+        
+        highScoresListEl.innerHTML += "<div>"+ userInput + "-" + scorePercentage + "</div>";
+        });
+};
+
+function save(data) {
+    let array = JSON.parse(localStorage.getItem("highScores")) || [];
+    array.push(data);
+    localStorage.setItem("highScores", JSON.stringify(array));
 }

@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <div class="scores" id="scores">View high scores</div>
+        <div class="scores" id="scores"><a href="./highscore.html">View high scores</a></div>
         <div class="timer" id="timer">Time:</div>
     </header>
     <main class="page-content">
@@ -47,10 +47,11 @@
                 <h2 class="done" id="done">All Done!</h2>
                 <div class="finalResult" id="finalResult">
                     <p>
-                        Your final score is <span class="finalScore"></span></div>
+                        Your final score is <span class="finalScore" id="finalScore"></span>.
                     </p>
+                </div>
                 <label for="userInitial">Enter initials: </label>
-                <input type="text" class="userInitial" value="">
+                <input type="text" class="userInitial" id="userInitial" value="">
                 <button class="submitBtn btn" id="submitBtn" type="submit">Submit</button>
             </div>
         </section>

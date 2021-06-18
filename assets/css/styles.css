@@ -23,6 +23,10 @@ body {
     color: purple;
 }
 
+a {
+    text-decoration: none;
+}
+
 .wrap {
     margin: 0 auto;
     width: 35%;
@@ -43,10 +47,10 @@ body {
     display: none;
 }
 
-.button, .submitBtn {
+.btn {
     border: 1px purple solid;
     background-color:  #330066;
-    border-radius: 10%;
+    border-radius: 5px;
     padding: 5px 15px;
     color: #fff;
     transition: background 0.1s ease;
@@ -66,7 +70,7 @@ body {
     margin: 0 auto;
 }
 
-.results {
+.results, .highScores {
     max-width: 50%;
     margin: 0 auto;
 }
@@ -84,4 +88,12 @@ body {
     color: darkgray;
     font-style: italic;
     margin-top: 10px;
+}
+
+.highScoresList {
+    width: 100%;
+    border: 1px solid plum;
+    margin-bottom: 15px;
+    background-color: darkslateblue;
+    letter-spacing: 1px;
 }
