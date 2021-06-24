@@ -175,22 +175,21 @@ function gameOver() {
     submitBtnEl.addEventListener("click", function submitClick(){
         resultsEl.style.display="none";
         // highScoresEl.style.display="block";
-        
-        
-        // // Gets input value
-        var userInput = userInitEl.value.trim();
-        var highScoreObject = {
-            name: userInput,
-            score: scorePercentage
-        }
-        
-        if (!userInput) {
+                
+        if (userInput) {
+            // // Gets input value
+            var userInput = userInitEl.value.trim();
+            var highScoreObject = {
+                name: userInput,
+                score: scorePercentage
+            }
+            save(highScoreObject);
+            window.location.href = 'highscores.html';
+        } else {
             alert("You need to put your initials!");
             return false;
-        }
-
-        save(highScoreObject);        
-        });
+        }      
+    });
 };
 
 function save(data) {
