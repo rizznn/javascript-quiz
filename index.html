@@ -43,17 +43,19 @@
             </div>
         </section>
         <section>
-            <div class="results hide" id="results">
-                <h2 class="done" id="done">All Done!</h2>
-                <div class="finalResult" id="finalResult">
-                    <p>
-                        Your final score is <span class="finalScore" id="finalScore"></span>.
-                    </p>
+            <form action="">
+                <div class="results hide" id="results">
+                    <h2 class="done" id="done">All Done!</h2>
+                    <div class="finalResult" id="finalResult">
+                        <p>
+                            Your final score is <span class="finalScore" id="finalScore"></span>.
+                        </p>
+                    </div>
+                    <label for="userInitial">Enter initials: </label>
+                    <input type="text" class="userInitial" id="userInitial" value="">
+                    <a class="submitBtn btn" id="submitBtn" type="submit" href="./highscore.html">Submit</a>
                 </div>
-                <label for="userInitial">Enter initials: </label>
-                <input type="text" class="userInitial" id="userInitial" value="">
-                <button class="submitBtn btn" id="submitBtn" type="submit">Submit</button>
-            </div>
+            </form>
         </section>
     </main>
     <script src="./assets/js/script.js"></script>

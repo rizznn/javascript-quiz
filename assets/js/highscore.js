@@ -1,4 +1,4 @@
-var btnEl = document.querySelector("#clearHighScores");
+// var btnEl = document.querySelector("#clearHighScores");
 var highScoreElement = document.querySelector("#highScoresList");
 var savedScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
@@ -16,6 +16,6 @@ savedScores.forEach((person) => {
     highScoreElement.appendChild(person);
 });
 
-btnEl.addEventListener("click", function(){
-    localStorage.clear();
-})
+// btnEl.addEventListener("click", function(){
+//     localStorage.clear();
+// })

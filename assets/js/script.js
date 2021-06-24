@@ -11,8 +11,6 @@ const resultsEl = document.querySelector("#results");
 var userInitEl = document.querySelector("#userInitial");
 const submitBtnEl = document.querySelector("#submitBtn");
 var finalScoreEl = document.querySelector(".finalScore");
-const highScoresEl = document.querySelector("#highScores");
-const highScoresListEl = document.querySelector("#highScoresList");
 const goBackEl = document.querySelector("#goBack");
 const clearHighScoresEl = document.querySelector("#clearHighScores");
 const a = document.querySelector("#a");
@@ -163,9 +161,6 @@ function checkAnswer(ans){
     }
 }
 
-var highscore = 0;
-
-
 function gameOver() {
     challengeEl.style.display = "none";
     resultsEl.style.display="block"; 
@@ -177,22 +172,24 @@ function gameOver() {
     span.textContent = scorePercentage;
     finalScoreEl.appendChild(span);
 
-    submitBtnEl.addEventListener("click", function(){
+    submitBtnEl.addEventListener("click", function submitClick(){
         resultsEl.style.display="none";
-        highScoresEl.style.display="block";
+        // highScoresEl.style.display="block";
+        
         
         // // Gets input value
-        var userInput = userInitEl.value;
+        var userInput = userInitEl.value.trim();
         var highScoreObject = {
             name: userInput,
-            score:  scorePercentage
+            score: scorePercentage
         }
         
-        save(highScoreObject);
+        if (!userInput) {
+            alert("You need to put your initials!");
+            return false;
+        }
 
-        scoresEl.style.display = "block";
-        
-        highScoresListEl.innerHTML += "<div>"+ userInput + "-" + scorePercentage + "</div>";
+        save(highScoreObject);        
         });
 };
 

@@ -92,8 +92,9 @@ a {
 
 .highScoresList {
     width: 100%;
-    border: 1px solid plum;
     margin-bottom: 15px;
-    background-color: darkslateblue;
+    background-color: rgb(216, 205, 243);
     letter-spacing: 1px;
+    font-size: 1rem;
+    padding: 5px 25px;
 }
