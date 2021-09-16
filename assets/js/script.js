@@ -17,7 +17,7 @@ const a = document.querySelector("#a");
 const b = document.querySelector("#b");
 const c = document.querySelector("#c");
 const d = document.querySelector("#d");
-
+var scorePercentage;
 // set of questions
 let quizQuestions = [
     {
@@ -166,31 +166,30 @@ function gameOver() {
     resultsEl.style.display="block"; 
     
     // score is equals to the amount of time left
-    var scorePercentage = timerCount;
+    scorePercentage = timerCount;
 
     const span = document.createElement("span");
     span.textContent = scorePercentage;
     finalScoreEl.appendChild(span);
+  
+    submitBtnEl.addEventListener('click', submitInitials);
+}
 
-    submitBtnEl.addEventListener("click", function submitClick(){
-        resultsEl.style.display="none";
-        // highScoresEl.style.display="block";
-                
-        if (userInput) {
-            // // Gets input value
-            var userInput = userInitEl.value.trim();
-            var highScoreObject = {
-                name: userInput,
-                score: scorePercentage
-            }
-            save(highScoreObject);
-            window.location.href = 'highscores.html';
-        } else {
-            alert("You need to put your initials!");
-            return false;
-        }      
-    });
-};
+function submitInitials(event) {
+    event.preventDefault();
+    var userInput = userInitEl.value.trim();
+    if (!userInput) {
+        alert('Please enter your initials first.');
+        return false;
+    }
+    var highScoreObject = {
+        name: userInput,
+        score: scorePercentage,
+    };
+    save(highScoreObject);
+    window.location.href = 'highscore.html';
+}
+
 
 function save(data) {
     let array = JSON.parse(localStorage.getItem("highScores")) || [];
