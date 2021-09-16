@@ -108,6 +108,7 @@ function time() {
 
         if(timerCount === 0 || firstQ === lastQ){
             clearInterval(countdown);
+            gameOver();
         }
     }, 1000);
 }
